@@ -1,8 +1,7 @@
 /* ===============================
    1. Переменные проекта
    =============================== */
-   :root {
-  /* Основные цвета проекта */
+:root {
   --color-bg: #ffffff;
   --color-text: #222222;
   --color-muted: #666666;
@@ -16,19 +15,16 @@
   --color-success-bg: #eefaf0;
   --color-white: #ffffff;
 
-  /* Отступы */
   --space-xs: 4px;
   --space-sm: 8px;
   --space-md: 16px;
   --space-lg: 24px;
   --space-xl: 32px;
 
-  /* Скругления */
   --radius-sm: 6px;
   --radius-md: 8px;
   --radius-lg: 12px;
 
-  /* Размеры */
   --container-width: 1100px;
 }
 
@@ -61,19 +57,9 @@ footer {
   background-color: var(--color-surface);
 }
 
-.site-header {
-  max-width: var(--container-width); 
-  margin: 0 auto;
-}
-
 /* ===============================
    3. Общие элементы интерфейса
    =============================== */
-
-/*
-  Оформляем текстовый логотип.
-*/
-
 a {
   color: var(--color-primary);
 }
@@ -87,44 +73,73 @@ a:focus-visible {
   outline-offset: 3px;
 }
 
-.site-logo {
+/* ===============================
+   4. Компоненты страницы
+   =============================== */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--space-lg); 
+}
+
+/* Компенсация высоты липкого хедера */
+main {
+  /* Отступ равен высоте хедера с его паддингами. 
+     Если высота хедера изменилась, поправьте это значение */
+  margin-top: calc(var(--space-lg) * 2 + 1.5em); 
+}
+
+
+/* Блок: header */
+.header__container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+
+/* Блок: logo */
+.logo {
   font-weight: bold;
   text-decoration: none;
   color: var(--color-text);
 }
 
-/*
-  Убираем стандартные отступы и маркеры списка навигации.
-*/
-.site-nav__list {
+.logo:hover {
+  color: var(--color-text);
+}
+
+/* Блок: nav */
+.nav__list {
   padding: 0;
-  margin: var(--space-md) 0 0; 
+  margin: 0;
   list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
 }
 
-/*
-  Добавляем расстояние между пунктами меню.
-*/
-.site-nav__list li {
-  margin-bottom: var(--space-sm);
+.nav__item {
+  margin-bottom: 0;
 }
 
-/*
-  Оформляем ссылки меню.
-*/
-.site-nav__list a {
+.nav__link {
   color: var(--color-primary);
   text-decoration: none;
 }
 
-/*
-  При наведении мыши подчёркиваем ссылку.
-  Подробно состояния интерфейса будут рассмотрены в практической работе 1.7.
-*/
-.site-nav__list a:hover {
+.nav__link:hover {
   text-decoration: underline;
 }
 
+/* Блок: button */
 .button {
   display: inline-block;
   padding: var(--space-sm) var(--space-md);
@@ -151,14 +166,7 @@ a:focus-visible {
   cursor: not-allowed;
 }
 
-/* ===============================
-   4. Компоненты страницы
-   =============================== */
-
-/*
-  Hero-блок — первый крупный блок страницы.
-  Он визуально отделяется от остальных разделов фоном и отступами.
-*/
+/* Блок: hero */
 .hero {
   max-width: var(--container-width);
   margin: 0 auto var(--space-xl);
@@ -167,34 +175,61 @@ a:focus-visible {
   border-radius: var(--radius-lg);
 }
 
+.hero__title {
+  margin-top: 0;
+}
+
+/* Блок: section */
 .section {
   max-width: var(--container-width);
   margin: 0 auto var(--space-xl);
 }
 
-.section h2 {
+.section__title {
   margin-top: 0;
 }
 
+/* Блок: advantages-list */
+.advantages-list {
+  padding-left: var(--space-md);
+}
+
+.advantages-list__item {
+  margin-bottom: var(--space-sm);
+}
+
+/* Блок: product-grid (Grid-сетка карточек) */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-md);
+}
+
+/* Блок: product-card */
 .product-card {
-  margin-bottom: var(--space-md);
   padding: var(--space-md);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   background-color: var(--color-bg);
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.2s ease;
 }
 
 .product-card:hover {
   border-color: var(--color-primary);
 }
 
-.product-card h3 {
+.product-card__title {
   margin-top: 0;
 }
-/*
-  Дополнительный информационный блок.
-*/
-.aside-info {
+
+.product-card__button {
+  margin-top: auto;
+}
+
+/* Блок: info-block */
+.info-block {
   max-width: var(--container-width);
   margin: 0 auto var(--space-xl);
   padding: var(--space-md);
@@ -202,10 +237,30 @@ a:focus-visible {
   background-color: var(--color-surface);
 }
 
+.info-block__title {
+  margin-top: 0;
+}
+
+/* Блок: footer */
+.footer__container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.footer__copyright,
+.footer__discipline {
+  margin: 0;
+}
+
 /* ===============================
    5. Форма и модальное окно
    =============================== */
 
+/* Блок: order-dialog */
 .order-dialog {
   width: min(100% - 32px, 560px);
   padding: var(--space-lg);
@@ -217,18 +272,23 @@ a:focus-visible {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
+.order-dialog__title {
+  margin-top: 0;
+}
+
+/* Блок: form-field */
 .form-field {
   margin-bottom: var(--space-md);
 }
 
-.form-field label {
+.form-field__label {
   display: block;
   margin-bottom: var(--space-xs);
 }
 
-.form-field input,
-.form-field select,
-.form-field textarea {
+.form-field__input,
+.form-field__select,
+.form-field__textarea {
   width: 100%;
   padding: 10px 12px;
   border: 1px solid var(--color-border);
@@ -236,41 +296,33 @@ a:focus-visible {
   font: inherit;
 }
 
-.form-field input[type="checkbox"] {
+.form-field__checkbox {
   width: auto;
 }
 
-.form-field small {
+.form-field__hint {
   display: block;
   margin-top: var(--space-xs);
   color: var(--color-muted);
 }
 
-/*
-  Видимый фокус для клавиатурной навигации.
-*/
-/* .form-field input:focus-visible,
-.form-field select:focus-visible,
-.form-field textarea:focus-visible,
-.form-actions button:focus-visible {
-  outline: 2px solid #0057b8;
-  outline-offset: 2px;
-} */
+.form-field--checkbox .form-field__checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  cursor: pointer;
+}
 
-/*
-  Подсветка ошибочных полей.
-  Атрибут aria-invalid будет добавляться через JavaScript.
-*/
-.form-field input:hover,
-.form-field select:hover,
-.form-field textarea:hover {
+/* Состояния полей формы */
+.form-field__input:hover,
+.form-field__select:hover,
+.form-field__textarea:hover {
   border-color: var(--color-primary);
 }
 
-.form-field input:focus-visible,
-.form-field select:focus-visible,
-.form-field textarea:focus-visible,
-.form-actions button:focus-visible {
+.form-field__input:focus-visible,
+.form-field__select:focus-visible,
+.form-field__textarea:focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 3px;
 }
@@ -279,41 +331,58 @@ a:focus-visible {
   border-color: var(--color-danger);
 }
 
-
-
- .form-actions {
+/* Блок: form-actions */
+.form-actions {
   display: flex;
-  gap: var(--space-sm); 
-  margin-top: var(--space-lg); 
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+  flex-wrap: wrap;
 }
 
-.form-actions button {
-  display: inline-block;
-  padding: var(--space-sm) var(--space-md);
-  color: var(--color-white);
-  background-color: var(--color-primary);
-  border: none;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  font: inherit;
+.form-actions__button:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
 }
 
-.form-actions button:hover {
-  background-color: var(--color-primary-dark);
-}
-
-.form-actions button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
- 
-/*
-  Сообщение об успешной отправке.
-*/
+/* Блок: success-message */
 .success-message {
   max-width: var(--container-width);
   margin: var(--space-lg) auto;
   padding: var(--space-md);
   border-left: 4px solid var(--color-success);
   background-color: var(--color-success-bg);
+}
+
+/* ===============================
+   6. Адаптивность
+   =============================== */
+@media (max-width: 768px) {
+  .header__container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav__list {
+    flex-direction: column;
+    gap: var(--space-sm);
+    margin-top: var(--space-md);
+  }
+
+  .footer__container {
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .form-actions__button {
+    width: 100%;
+    text-align: center;
+  }
 }
