@@ -77,6 +77,23 @@ a:focus-visible {
    4. Компоненты страницы
    =============================== */
 
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--space-lg); 
+}
+
+/* Компенсация высоты липкого хедера */
+main {
+  /* Отступ равен высоте хедера с его паддингами. 
+     Если высота хедера изменилась, поправьте это значение */
+  margin-top: calc(var(--space-lg) * 2 + 1.5em); 
+}
+
+
 /* Блок: header */
 .header__container {
   max-width: var(--container-width);
