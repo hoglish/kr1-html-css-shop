@@ -10,6 +10,7 @@
 <meta property="og:description" content="Учебный frontend-проект интернет-магазина.">
 <meta property="og:image" content="https://username.github.io/kr1-html-css-shop/images/preview.jpg">
   <link rel="stylesheet" href="css/style.css">
+<script src="js/main.js" defer></script>
 </head>
 <body>
 <header class="header">
@@ -28,54 +29,80 @@
     </div>
 </header>
 
-  <main>
+<main>
     <nav class="breadcrumbs" aria-label="Хлебные крошки">
       <a href="index.html">Главная</a>
       <span>Каталог</span>
     </nav>
 
-    <section class="section">
-      <h1>Каталог товаров</h1>
-      <p>
-        На этой странице представлен учебный каталог товаров.
-        В дальнейшем здесь будут добавлены фильтры, сортировка и более
-        подробные карточки.
-      </p>
+    <section class="catalog-layout">
+      
+      <aside class="catalog-filters">
+        <h2>Фильтры</h2>
+        <form class="filters-form" action="#" method="get">
+          <fieldset>
+            <legend>Категория</legend>
+            <label>
+              <input type="checkbox" name="category" value="all" checked>
+              Все товары
+            </label>
+            <label>
+              <input type="checkbox" name="category" value="popular">
+              Популярные
+            </label>
+            <label>
+              <input type="checkbox" name="category" value="new">
+              Новинки
+            </label>
+          </fieldset>
+
+          <fieldset>
+            <legend>Цена</legend>
+            <div class="price-inputs">
+                <label for="price-from">От</label>
+                <input id="price-from" name="price-from" type="number" min="0" placeholder="0">
+                
+                <label for="price-to">До</label>
+                <input id="price-to" name="price-to" type="number" min="0" placeholder="5000">
+            </div>
+          </fieldset>
+
+          <button class="button" type="submit">Применить</button>
+        </form>
+      </aside>
+
+      <section class="catalog-products">
+        <h1 class="section__title">Каталог товаров</h1>
+        <p>На этой странице представлен учебный каталог товаров.</p>
+
+        <div class="product-grid">
+          
+          <article class="product-card">
+            <h3 class="product-card__title">Товар 1</h3>
+            <p class="product-card__description">Краткое описание учебного товара.</p>
+            <p class="product-card__price">Цена: 1000 руб.</p>
+            <button class="button product-card__button" type="button" data-product="Товар 1">Заказать</button>
+          </article>
+
+          <article class="product-card">
+            <h3 class="product-card__title">Товар 2</h3>
+            <p class="product-card__description">Краткое описание учебного товара.</p>
+            <p class="product-card__price">Цена: 1500 руб.</p>
+            <button class="button product-card__button" type="button" data-product="Товар 2">Заказать</button>
+          </article>
+
+          <article class="product-card">
+            <h3 class="product-card__title">Товар 3</h3>
+            <p class="product-card__description">Краткое описание учебного товара.</p>
+            <p class="product-card__price">Цена: 2000 руб.</p>
+            <button class="button product-card__button" type="button" data-product="Товар 3">Заказать</button>
+          </article>
+
+        </div>
+      </section>
+
     </section>
-
-    <section class="section">
-      <h2>Список товаров</h2>
-
-      <div class="product-grid">
-        <article class="product-card">
-          <h3 class="product-card__title">Товар 1</h3>
-          <p class="product-card__description">Краткое описание учебного товара.</p>
-          <p class="product-card__price">Цена: 1000 руб.</p>
-          <button class="button product-card__button" type="button" data-product="Товар 1">
-            Заказать
-          </button>
-        </article>
-
-        <article class="product-card">
-          <h3 class="product-card__title">Товар 2</h3>
-          <p class="product-card__description">Краткое описание учебного товара.</p>
-          <p class="product-card__price">Цена: 1500 руб.</p>
-          <button class="button product-card__button" type="button" data-product="Товар 2">
-            Заказать
-          </button>
-        </article>
-
-        <article class="product-card">
-          <h3 class="product-card__title">Товар 3</h3>
-          <p class="product-card__description">Краткое описание учебного товара.</p>
-          <p class="product-card__price">Цена: 2000 руб.</p>
-          <button class="button product-card__button" type="button" data-product="Товар 3">
-            Заказать
-          </button>
-        </article>
-      </div>
-    </section>
-  </main>
+</main>
 
  <footer class="footer" id="contacts">
     <div class="footer__container">
@@ -83,5 +110,104 @@
       <p class="footer__discipline">Дисциплина: Фронтенд и бэкенд разработка</p>
     </div>
   </footer>
+
+    <dialog class="order-dialog" id="order-dialog" aria-labelledby="order-dialog-title">
+    <h2 class="order-dialog__title" id="order-dialog-title">Оформление заявки</h2>
+
+    <form class="order-form" id="order-form" action="#" method="post" novalidate>
+      <input id="selected-product" name="selected-product" type="hidden">
+
+      <div class="form-field">
+        <label class="form-field__label" for="order-name">Имя</label>
+        <input
+          class="form-field__input"
+          id="order-name"
+          name="name"
+          type="text"
+          placeholder="Введите ваше имя"
+          minlength="2"
+          autocomplete="given-name"
+          required
+        >
+      </div>
+
+      <div class="form-field">
+        <label class="form-field__label" for="order-email">E-mail</label>
+        <input
+          class="form-field__input"
+          id="order-email"
+          name="email"
+          type="email"
+          placeholder="example@mail.ru"
+          autocomplete="email"
+          required
+        >
+      </div>
+
+      <div class="form-field">
+        <label class="form-field__label" for="order-phone">Телефон</label>
+        <input
+          class="form-field__input"
+          id="order-phone"
+          name="phone"
+          type="tel"
+          inputmode="tel"
+          placeholder="+7 (900) 000-00-00"
+          pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$"
+          required
+        >
+        <small class="form-field__hint">Формат: +7 (900) 000-00-00</small>
+      </div>
+
+      <div class="form-field">
+        <label class="form-field__label" for="order-date">Дата связи</label>
+        <input
+          class="form-field__input"
+          id="order-date"
+          name="date"
+          type="date"
+        >
+      </div>
+
+      <div class="form-field">
+        <label class="form-field__label" for="order-topic">Тема заявки</label>
+        <select class="form-field__select" id="order-topic" name="topic" required>
+          <option value="">Выберите тему</option>
+          <option value="product">Заказ товара</option>
+          <option value="consultation">Консультация</option>
+          <option value="delivery">Доставка</option>
+        </select>
+      </div>
+
+      <div class="form-field">
+        <label class="form-field__label" for="order-comment">Комментарий</label>
+        <textarea
+          class="form-field__textarea"
+          id="order-comment"
+          name="comment"
+          rows="4"
+          placeholder="Укажите дополнительную информацию"
+        ></textarea>
+      </div>
+
+      <div class="form-field form-field--checkbox">
+        <label class="form-field__checkbox-label">
+          <input
+            class="form-field__checkbox"
+            id="order-agreement"
+            name="agreement"
+            type="checkbox"
+            required
+          >
+          Я согласен на обработку данных
+        </label>
+      </div>
+
+      <div class="form-actions">
+        <button class="button form-actions__button" type="button" id="close-order-dialog">Закрыть</button>
+        <button class="button form-actions__button" type="submit">Отправить заявку</button>
+      </div>
+    </form>
+  </dialog>
 </body>
 </html>
