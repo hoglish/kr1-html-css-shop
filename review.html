@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Контактная информация учебного интернет-магазина.">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Учебный интернет-магазин">
+<meta property="og:description" content="Учебный frontend-проект интернет-магазина.">
+<meta property="og:image" content="https://username.github.io/kr1-html-css-shop/images/preview.jpg">
+  <title>Отзывы — Учебный интернет-магазин</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="header">
+    <div class="header__container">
+        <a href="index.html" class="logo">ShopProject</a>
+        <nav class="nav">
+            <ul class="nav__list">
+                <li class="nav__item"><a href="index.html" class="nav__link">Главная</a></li>
+                <li class="nav__item"><a href="catalog.html" class="nav__link">Каталог</a></li>
+                <li class="nav__item"><a href="service.html" class="nav__link">Услуги</a></li>
+                <li class="nav__item"><a href="contacts.html" class="nav__link">Контакты</a></li>
+                                <li class="nav__item"><a href="review.html" class="nav__link nav__link--active">Отзывы</a></li>
+
+<!--                 <li class="nav__item"><a href="#advantages" class="nav__link">Преимущества</a></li>
+                <li class="nav__item"><a href="#popular" class="nav__link">Популярные товары</a></li> -->
+<!--                 <li class="nav__item"><a href="#contacts" class="nav__link">Обратная связь</a></li>
+ -->            </ul>
+        </nav>
+    </div>
+</header>
+
+  <main>
+    <nav class="breadcrumbs" aria-label="Хлебные крошки">
+      <a href="index.html">Главная</a>
+      <span>Отзывы</span>
+    </nav>
+
+    <section class="section">
+
+        <div class="section__review">
+            <h1>Отзывы</h1>
+            <button class="button review__button" id="reviewButton">Оставить отзыв</button>
+        </div>
+      </section>
+      
+      
+      <section class="review_list">
+        <div class="review_list__grid">
+            <article class = "review_examp">
+                <p>Иванчиков Олег</p>
+                <p>Наименование товара</p>
+                <p>Текст отзыва</p>
+                <p>★ ★ ☆ ☆ ☆ </p> 
+            </article>
+                    <article class = "review_examp">
+                <p>Иванчиков Олег</p>
+                                <p>Наименование товара</p>
+
+                <p>Текст отзыва</p>
+                <p>★ ★ ★ ☆ ☆ </p> 
+            </article>
+                        <article class = "review_examp">
+                <p>Иванчиков Олег</p>
+                                <p>Наименование товара</p>
+
+                <p>Текст отзыва</p>
+                <p>★ ★ ★ ★ ☆ </p> 
+            </article>
+                        <article class = "review_examp">
+                <p>Иванчиков Олег</p>
+                                <p>Наименование товара</p>
+
+                <p>Текст отзыва</p>
+                <p>★ ★ ☆ ☆ ☆ </p> 
+            </article>
+                        <article class = "review_examp">
+                <p>Иванчиков Олег</p>
+                                <p>Наименование товара</p>
+
+                <p>Текст отзыва</p>
+                <p>★ ★ ★ ☆ ☆ </p> 
+            </article>
+        </div>
+      </section>
+
+
+  </main>
+
+ <footer class="footer" id="contacts">
+    <div class="footer__container">
+      <p class="footer__copyright">&copy; 2026 Учебный проект. Все права защищены.</p>
+      <p class="footer__discipline">Дисциплина: Фронтенд и бэкенд разработка</p>
+    </div>
+  </footer>
+
+
+  <dialog class="order-dialog" id="order-dialog" aria-labelledby="order-dialog-title">
+    <h2 class="order-dialog__title" id="order-dialog-title">Отзыв</h2>
+
+    <form class="order-form" id="order-form" action="#" method="post" novalidate>
+      <input id="selected-product" name="selected-product" type="hidden">
+
+      <div class="form-field">
+        <label class="form-field__label" for="order-name">Имя</label>
+        <input
+          class="form-field__input"
+          id="order-name"
+          name="name"
+          type="text"
+          placeholder="Введите ваше имя"
+          minlength="2"
+          autocomplete="given-name"
+          required
+        >
+      </div>
+
+      <div class="form-field">
+        <label class="form-field__label" for="order-email">E-mail</label>
+        <input
+          class="form-field__input"
+          id="order-email"
+          name="email"
+          type="email"
+          placeholder="example@mail.ru"
+          autocomplete="email"
+          required
+        >
+      </div>
+
+        <div class="form-field">
+        <label class="form-field__label" for="order-topic">Товар</label>
+        <select class="form-field__select" id="order-topic" name="topic" required>
+          <option value="">Товар 1</option>
+          <option value="product">Товар 2</option>
+          <option value="consultation">Товар 3</option>
+        </select>
+      </div>
+
+
+      <div class="form-field">
+        <label class="form-field__label" for="order-comment">Текст отзыва</label>
+        <textarea
+          class="form-field__textarea"
+          id="order-comment"
+          name="comment"
+          rows="4"
+          placeholder="Укажите текст отзыва"
+        ></textarea>
+      </div>
+
+        <div class="form-field">
+        <label class="form-field__label" for="order-name">Оценка</label>
+        <input
+          class="form-field__input"
+          id="order-name"
+          name="name"
+          type="text"
+          placeholder="Введите оценку"
+          maxlength="1"
+          required
+        >
+      </div>
+
+
+      </div>
+
+      <div class="form-field form-field--checkbox">
+        <label class="form-field__checkbox-label">
+          <input
+            class="form-field__checkbox"
+            id="order-agreement"
+            name="agreement"
+            type="checkbox"
+            required
+          >
+          Я согласен на обработку данных
+        </label>
+      </div>
+
+      <div class="form-actions">
+        <button class="button form-actions__button" type="button" id="close-order-dialog">Закрыть</button>
+        <button class="button form-actions__button" type="submit">Отправить отзыв</button>
+      </div>
+    </form>
+  </dialog>
+<script src="js/main.js"></script>
+</body>
+</html>

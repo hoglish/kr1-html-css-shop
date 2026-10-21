@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Каталог товаров учебного интернет-магазина.">
+  <title>Каталог услуг — Учебный интернет-магазин</title>
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Учебный интернет-магазин">
+<meta property="og:description" content="Учебный frontend-проект интернет-магазина.">
+<meta property="og:image" content="https://username.github.io/kr1-html-css-shop/images/preview.jpg">
+  <link rel="stylesheet" href="css/style.css">
+<script src="js/main.js" defer></script>
+</head>
+<body>
+<header class="header">
+    <div class="header__container">
+        <a href="index.html" class="logo">ShopProject</a>
+        <nav class="nav">
+            <ul class="nav__list">
+                <li class="nav__item"><a href="index.html" class="nav__link">Главная</a></li>
+                <li class="nav__item"><a href="catalog.html" class="nav__link">Каталог</a></li>
+                <li class="nav__item"><a href="service.html" class="nav__link nav__link--active">Услуги</a></li>
+                <li class="nav__item"><a href="contacts.html" class="nav__link">Контакты</a></li>
+                                                <li class="nav__item"><a href="review.html" class="nav__link">Отзывы</a></li>
+
+<!--                 <li class="nav__item"><a href="#advantages" class="nav__link">Преимущества</a></li>
+                <li class="nav__item"><a href="#popular" class="nav__link">Популярные товары</a></li> -->
+<!--                 <li class="nav__item"><a href="#contacts" class="nav__link">Обратная связь</a></li>
+ -->            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <nav class="breadcrumbs" aria-label="Хлебные крошки">
+      <a href="index.html">Главная</a>
+      <span>Услуги</span>
+    </nav>
+
+    <section class="service-layout">
+
+      <section class="catalog-service">
+        <h1 class="section__title">Услуги</h1>
+        <p>На этой странице представлен учебный список услуг.</p>
+
+        <div class="service-grid">
+          <article class="service-card">
+                        <img src="images/4.jpg" alt="Услуга 1" class="product-card__image">
+
+            <h3 class="service-card__title">Услуга 1</h3>
+            <p class="service-card__description">Краткое описание учебной услуги.</p>
+            <p class="service-card__price">Цена: 1500 руб.</p>
+            <button class="button service-card__button" type="button" data-service="Товар 1">Заказать</button>
+          </article>
+
+          <article class="service-card">
+                        <img src="images/5.jpeg" alt="Услуга 2" class="product-card__image">
+
+            <h3 class="service-card__title">Услуга 2</h3>
+            <p class="service-card__description">Краткое описание учебной услуги.</p>
+            <p class="service-card__price">Цена: 1500 руб.</p>
+            <button class="button service-card__button" type="button" data-service="Товар 2">Заказать</button>
+          </article>
+
+            <article class="service-card">
+                        <img src="images/6.jpeg" alt="Услуга 3" class="product-card__image">
+
+            <h3 class="service-card__title">Услуга 3</h3>
+            <p class="service-card__description">Краткое описание учебной услуги.</p>
+            <p class="service-card__price">Цена: 1500 руб.</p>
+            <button class="button service-card__button" type="button" data-service="Товар 2">Заказать</button>
+          </article>
+
+        </div>
+      </section>
+
+    </section>
+</main>
+
+ <footer class="footer" id="contacts">
+    <div class="footer__container">
+      <p class="footer__copyright">&copy; 2026 Учебный проект. Все права защищены.</p>
+      <p class="footer__discipline">Дисциплина: Фронтенд и бэкенд разработка</p>
+    </div>
+  </footer>
+
+    <dialog class="order-dialog" id="order-dialog" aria-labelledby="order-dialog-title">
+    <h2 class="order-dialog__title" id="order-dialog-title">Оформление заявки</h2>
+
+    <form class="order-form" id="order-form" action="#" method="post" novalidate>
+      <input id="selected-product" name="selected-product" type="hidden">
+
+      <div class="form-field">
+        <label class="form-field__label" for="order-name">Имя</label>
+        <input
+          class="form-field__input"
+          id="order-name"
+          name="name"
+          type="text"
+          placeholder="Введите ваше имя"
+          minlength="2"
+          autocomplete="given-name"
+          required
+        >
+      </div>
+
+      <div class="form-field">
+        <label class="form-field__label" for="order-email">E-mail</label>
+        <input
+          class="form-field__input"
+          id="order-email"
+          name="email"
+          type="email"
+          placeholder="example@mail.ru"
+          autocomplete="email"
+          required
+        >
+      </div>
+
+      <div class="form-field">
+        <label class="form-field__label" for="order-phone">Телефон</label>
+        <input
+          class="form-field__input"
+          id="order-phone"
+          name="phone"
+          type="tel"
+          inputmode="tel"
+          placeholder="+7 (900) 000-00-00"
+          pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$"
+          required
+        >
+        <small class="form-field__hint">Формат: +7 (900) 000-00-00</small>
+      </div>
+
+      <div class="form-field">
+        <label class="form-field__label" for="order-date">Дата связи</label>
+        <input
+          class="form-field__input"
+          id="order-date"
+          name="date"
+          type="date"
+        >
+      </div>
+
+      <div class="form-field">
+        <label class="form-field__label" for="order-topic">Тема заявки</label>
+        <select class="form-field__select" id="order-topic" name="topic" required>
+          <option value="">Выберите тему</option>
+          <option value="product">Заказ товара</option>
+          <option value="consultation">Консультация</option>
+          <option value="delivery">Доставка</option>
+        </select>
+      </div>
+
+      <div class="form-field">
+        <label class="form-field__label" for="order-comment">Комментарий</label>
+        <textarea
+          class="form-field__textarea"
+          id="order-comment"
+          name="comment"
+          rows="4"
+          placeholder="Укажите дополнительную информацию"
+        ></textarea>
+      </div>
+
+      <div class="form-field form-field--checkbox">
+        <label class="form-field__checkbox-label">
+          <input
+            class="form-field__checkbox"
+            id="order-agreement"
+            name="agreement"
+            type="checkbox"
+            required
+          >
+          Я согласен на обработку данных
+        </label>
+      </div>
+
+      <div class="form-actions">
+        <button class="button form-actions__button" type="button" id="close-order-dialog">Закрыть</button>
+        <button class="button form-actions__button" type="submit">Отправить заявку</button>
+      </div>
+    </form>
+  </dialog>
+</body>
+</html>

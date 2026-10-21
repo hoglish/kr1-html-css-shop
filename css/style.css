@@ -20,6 +20,7 @@
   --space-md: 16px;
   --space-lg: 24px;
   --space-xl: 32px;
+  --space-nav: 50px;
 
   --radius-sm: 6px;
   --radius-md: 8px;
@@ -50,6 +51,10 @@ body {
   line-height: 1.5;
   color: var(--color-text);
   background-color: var(--color-bg);
+
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 header,
@@ -100,6 +105,7 @@ main {
   /* Отступ равен высоте хедера с его паддингами. 
      Если высота хедера изменилась, поправьте это значение */
   margin-top: calc(var(--space-lg) * 2 + 1.5em); 
+  flex-grow: 1; 
 }
 
 
@@ -119,11 +125,13 @@ main {
   font-weight: bold;
   text-decoration: none;
   color: var(--color-text);
+  flex:1;
 }
 
 .logo:hover {
   color: var(--color-text);
 }
+
 
 /* Блок: nav */
 .nav__list {
@@ -132,7 +140,9 @@ main {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-md);
+  gap: var(--space-nav);
+  
+
 }
 
 .nav__item {
@@ -144,8 +154,14 @@ main {
   text-decoration: none;
 }
 
-.nav__link:hover {
-  text-decoration: underline;
+
+
+.product-card__image {
+  width: 100%;                  /* Растягиваем на всю ширину карточки */
+  height: 200px;                /* Задаем фиксированную высоту для аккуратной сетки */
+  object-fit: cover;            /* Картинка будет красиво заполнять область без деформации */
+  border-radius: var(--radius-sm); /* Слегка скругляем углы у фото */
+  margin-bottom: var(--space-md);  /* Делаем отступ снизу до заголовка */
 }
 
 /* Блок: button */
@@ -263,6 +279,136 @@ main {
 .footer__copyright,
 .footer__discipline {
   margin: 0;
+}
+
+
+/* УСЛУГИ */
+.catalog-service {
+  max-width: var(--container-width); /* Ограничиваем ширину как у остальных секций */
+  margin: 0 auto var(--space-xl);    /* Центрируем по горизонтали и даем отступ снизу */
+}
+
+/* Сетка карточек услуг */
+.service-grid {
+  display: grid;
+  /* Адаптивная сетка: карточки не уже 280px, занимают всё доступное место */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+  gap: var(--space-md);              /* Отступы между карточками */
+}
+
+/* Карточка услуги (наследуем стили от product-card для единообразия) */
+.service-card {
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg);
+  display: flex;
+  flex-direction: column;            /* Вертикальное расположение элементов */
+  transition: border-color 0.2s ease;
+}
+
+.service-card:hover {
+  border-color: var(--color-primary);
+}
+
+.service-card__title {
+  margin-top: 0;
+}
+
+.service-card__button {
+  margin-top: auto;                  /* Прижимает кнопку к низу карточки */
+}
+
+.section__review{
+  display: flex;
+  flex-direction: row;
+  gap:var(--space-xl);
+  align-items: center;
+}
+
+.review__button{
+  width: 30%;
+  height: 50px;
+}
+
+.review_list__grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+  gap: var(--space-md); 
+    
+}
+
+.review_list {
+  max-width: var(--container-width); /* Ограничение до 1100px */
+  margin: 0 auto var(--space-xl);    /* Центрирование + отступ снизу */
+}
+
+.review_examp{
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg);
+  display: flex;
+  flex-direction: column;            /* Вертикальное расположение элементов */
+  transition: border-color 0.2s ease;
+}
+.review_examp:hover {
+  border-color: var(--color-primary); /* Синяя обводка при наведении */
+}
+
+/* Блок: nav */
+.nav__list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-nav); /* ← твоё расстояние между пунктами меню */
+}
+
+.nav__item {
+  margin-bottom: 0;
+}
+
+.nav__link {
+  position: relative;
+  color: var(--color-text);
+  text-decoration: none; /* ← убираем стандартное подчёркивание ВООБЩЕ */
+  font-weight: 500;
+  padding: var(--space-xs) 0;
+}
+
+/* УБИРАЕМ underline при наведении — он создавал вторую линию */
+.nav__link:hover {
+  color: var(--color-primary);
+  /* text-decoration: underline; ← ЭТО УДАЛИТЬ */
+}
+
+/* Красивая линия через псевдоэлемент */
+.nav__link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px; /* отступ линии от текста */
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-primary);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.2s ease;
+}
+
+.nav__link:hover::after {
+  transform: scaleX(1);
+}
+
+.nav__link--active::after {
+  transform: scaleX(1);
+}
+
+.nav__link:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
 }
 
 /* ===============================

@@ -72,3 +72,9 @@ orderForm.addEventListener('submit', (event) => {
   // Закрываем модальное окно.
   orderDialog.close();
 });
+
+const reviewButton = document.getElementById('reviewButton');
+
+reviewButton.addEventListener('click', () =>{
+    orderDialog.showModal();
+})
