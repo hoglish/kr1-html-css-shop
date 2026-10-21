@@ -433,6 +433,122 @@ main {
 }
 
 /* ===============================
+   МОДАЛЬНОЕ ОКНО С ДЕТАЛЯМИ ТОВАРА
+=============================== */
+
+/* Кнопка "Подробнее" (вторичный стиль) */
+.button--secondary {
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+}
+
+.button--secondary:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+/* Контейнер кнопок внутри карточки */
+.product-card__actions {
+  display: flex;
+  gap: var(--space-sm);
+  margin-top: auto;
+  flex-wrap: wrap;
+}
+
+.product-card__actions .button {
+  flex: 1;
+  min-width: 120px;
+}
+
+/* Модальное окно деталей */
+.product-details-dialog {
+  width: min(100% - 32px, 800px);
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-lg);
+  background-color: var(--color-bg);
+}
+
+.product-details-dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.product-details {
+  position: relative;
+  padding: var(--space-lg);
+}
+
+.product-details__close {
+  position: absolute;
+  top: var(--space-md);
+  right: var(--space-md);
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: var(--color-surface);
+  border-radius: 50%;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--color-text);
+  transition: background-color 0.2s ease;
+  z-index: 10;
+}
+
+.product-details__close:hover {
+  background-color: var(--color-border);
+}
+
+.product-details__content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+  align-items: start;
+}
+
+.product-details__image {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+  object-fit: cover;
+}
+
+.product-details__title {
+  margin-top: 0;
+  margin-bottom: var(--space-sm);
+  font-size: 1.8rem;
+}
+
+.product-details__price {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: var(--color-primary);
+  margin-bottom: var(--space-md);
+}
+
+.product-details__description {
+  line-height: 1.6;
+  color: var(--color-text);
+  margin-bottom: var(--space-lg);
+}
+
+.product-details__actions {
+  margin-top: var(--space-lg);
+}
+
+/* Адаптив для мобильных */
+@media (max-width: 768px) {
+  .product-details__content {
+    grid-template-columns: 1fr;
+  }
+  
+  .product-details__title {
+    font-size: 1.4rem;
+  }
+}
+
+/* ===============================
    5. Форма и модальное окно
    =============================== */
 

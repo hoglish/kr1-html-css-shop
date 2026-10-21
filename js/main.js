@@ -145,4 +145,72 @@ window.addEventListener('hashchange', () => {
   applyTheme(window.location.hash === '#dark');
 });
 
+// ==========================================
+// 6. МОДАЛЬНОЕ ОКНО С ДЕТАЛЯМИ ТОВАРА
+// ==========================================
+const productDetailsDialog = document.getElementById('product-details-dialog');
+const detailsButtons = document.querySelectorAll('.product-card__details-button');
+const closeDetailsButton = document.getElementById('close-product-details');
+const productDetailsImage = document.getElementById('product-details-image');
+const productDetailsTitle = document.getElementById('product-details-title');
+const productDetailsPrice = document.getElementById('product-details-price');
+const productDetailsDescription = document.getElementById('product-details-description');
+const productDetailsOrderButton = document.getElementById('product-details-order');
+
+// Переменная для хранения текущего товара, чтобы кнопка "Заказать" внутри окна знала, что заказывать
+let currentProductInDetails = '';
+
+if (productDetailsDialog && detailsButtons.length > 0) {
+  detailsButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      // Находим родительскую карточку
+      const card = button.closest('.product-card');
+      if (!card) return;
+
+      // Читаем данные из data-атрибутов
+      const title = card.dataset.title || 'Товар';
+      const image = card.dataset.image || '';
+      const price = card.dataset.price || '0';
+      const description = card.dataset.fullDescription || 'Описание отсутствует.';
+
+      // Заполняем модальное окно
+      if (productDetailsImage) {
+        productDetailsImage.src = image;
+        productDetailsImage.alt = title;
+      }
+      if (productDetailsTitle) productDetailsTitle.textContent = title;
+      if (productDetailsPrice) productDetailsPrice.textContent = `Цена: ${price} руб.`;
+      if (productDetailsDescription) productDetailsDescription.textContent = description;
+
+      // Сохраняем название для кнопки "Заказать" внутри окна
+      currentProductInDetails = title;
+
+      productDetailsDialog.showModal();
+    });
+  });
+}
+
+// Закрытие окна деталей
+if (closeDetailsButton && productDetailsDialog) {
+  closeDetailsButton.addEventListener('click', () => {
+    productDetailsDialog.close();
+  });
+}
+
+// Кнопка "Заказать этот товар" внутри окна деталей
+if (productDetailsOrderButton && orderDialog) {
+  productDetailsOrderButton.addEventListener('click', () => {
+    // Закрываем окно деталей
+    productDetailsDialog.close();
+    
+    // Заполняем поле товара в форме заказа
+    if (selectedProductInput) {
+      selectedProductInput.value = currentProductInDetails;
+    }
+    
+    // Открываем окно заказа
+    orderDialog.showModal();
+  });
+}
+
 
