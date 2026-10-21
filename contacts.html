@@ -10,8 +10,14 @@
 <meta property="og:image" content="https://username.github.io/kr1-html-css-shop/images/preview.jpg">
   <title>Контакты — Учебный интернет-магазин</title>
   <link rel="stylesheet" href="css/style.css">
+    <script>
+    if (window.location.hash === '#dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  </script>
 </head>
 <body>
+  
 <header class="header">
     <div class="header__container">
         <a href="index.html" class="logo">ShopProject</a>
@@ -28,6 +34,8 @@
 <!--                 <li class="nav__item"><a href="#contacts" class="nav__link">Обратная связь</a></li>
  -->            </ul>
         </nav>
+                  <button class="theme-toggle" id="themeToggle" type="button" aria-label="Переключить тему">🌙</button>
+
     </div>
 </header>
 
@@ -49,6 +57,20 @@
         <li>Адрес: г. Москва, учебный проект</li>
       </ul>
     </section>
+<!-- СЕКЦИЯ С КАРТОЙ -->
+<section class="section">
+  <h2 class="section__title">Мы на карте</h2>
+  <div class="map-container">
+    <iframe 
+      src="https://yandex.ru/map-widget/v1/?um=constructor%3A0a6b8c9d0e1f2g3h4i5j6k7l8m9n0o1p&amp;source=constructor" 
+      width="100%" 
+      height="450" 
+      frameborder="0"
+      title="Яндекс Карта расположения магазина"
+      loading="lazy"
+    ></iframe>
+  </div>
+</section>
 
     <section class="section" id="feedback">
       <h2>Обратная связь</h2>
@@ -65,5 +87,7 @@
       <p class="footer__discipline">Дисциплина: Фронтенд и бэкенд разработка</p>
     </div>
   </footer>
+      <script src="js/main.js" defer></script>
+
 </body>
 </html>

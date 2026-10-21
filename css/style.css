@@ -411,6 +411,27 @@ main {
   outline-offset: 4px;
 }
 
+/* Стили для контейнера карты */
+.map-container {
+  width: 100%;
+  max-width: var(--container-width);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden; /* Чтобы скругление углов применялось и к карте внутри */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  margin-top: var(--space-md);
+}
+
+.map-container iframe {
+  display: block; /* Убирает лишние отступы снизу инлайнового фрейма */
+}
+
+/* Фильтр для темной темы, чтобы карта не слепила ночью */
+[data-theme="dark"] .map-container iframe {
+  filter: grayscale(1) invert(1) hue-rotate(180deg);
+  opacity: 0.8;
+}
+
 /* ===============================
    5. Форма и модальное окно
    =============================== */
@@ -620,5 +641,70 @@ main {
   
   .catalog-filters {
     order: -1; 
+  }
+}
+
+/* ===============================
+   ТЕМНАЯ ТЕМА
+=============================== */
+
+/* Переопределение переменных при наличии атрибута data-theme="dark" */
+[data-theme="dark"] {
+  --color-bg: #121212;
+  --color-text: #e0e0e0;
+  --color-muted: #a0a0a0;
+  --color-primary: #4da3ff; /* Более светлый синий для темного фона */
+  --color-primary-dark: #80bfff;
+  --color-border: #333333;
+  --color-surface: #1e1e1e;
+  --color-surface-accent: #1a2533;
+  --color-success-bg: #1a2f1c;
+}
+
+/* Плавный переход всех цветов при смене темы */
+body, 
+.header, 
+.footer, 
+.product-card, 
+.service-card, 
+.review_examp, 
+.catalog-filters, 
+.order-dialog, 
+.form-field__input, 
+.form-field__select, 
+.form-field__textarea {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Кнопка переключения темы в хедере */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  margin-left: var(--space-md);
+  background-color: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 1;
+  color: var(--color-text);
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background-color: var(--color-surface-accent);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+/* Адаптив: на мобильных кнопка темы не должна ломать меню */
+@media (max-width: 768px) {
+  .theme-toggle {
+    margin-left: 0;
+    margin-top: var(--space-sm);
   }
 }

@@ -10,6 +10,11 @@
 <meta property="og:image" content="https://username.github.io/kr1-html-css-shop/images/preview.jpg">
   <title>Отзывы — Учебный интернет-магазин</title>
   <link rel="stylesheet" href="css/style.css">
+    <script>
+    if (window.location.hash === '#dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  </script>
 </head>
 <body>
 <header class="header">
@@ -28,6 +33,8 @@
 <!--                 <li class="nav__item"><a href="#contacts" class="nav__link">Обратная связь</a></li>
  -->            </ul>
         </nav>
+                  <button class="theme-toggle" id="themeToggle" type="button" aria-label="Переключить тему">🌙</button>
+
     </div>
 </header>
 
@@ -185,6 +192,6 @@
       </div>
     </form>
   </dialog>
-<script src="js/main.js"></script>
+<script src="js/main.js" defer ></script>
 </body>
 </html>

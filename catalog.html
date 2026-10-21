@@ -10,6 +10,11 @@
 <meta property="og:description" content="Учебный frontend-проект интернет-магазина.">
 <meta property="og:image" content="https://username.github.io/kr1-html-css-shop/images/preview.jpg">
   <link rel="stylesheet" href="css/style.css">
+    <script>
+    if (window.location.hash === '#dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  </script>
 <script src="js/main.js" defer></script>
 </head>
 <body>
@@ -31,6 +36,8 @@
 
 </ul>
         </nav>
+                  <button class="theme-toggle" id="themeToggle" type="button" aria-label="Переключить тему">🌙</button>
+
     </div>
 </header>
 
@@ -82,36 +89,32 @@
 
         <div class="product-grid">
           
-                    <article class="product-card">
-            <img src="images/1.jpg" alt="Товар 1" class="product-card__image">
-            <h3 class="product-card__title">Товар 1</h3>
-            <p class="product-card__description">Краткое описание учебного товара.</p>
-            <p class="product-card__price">Цена: 1000 руб.</p>
-            <button class="button product-card__button" type="button" data-product="Товар 1">
-              Заказать
-            </button>
-          </article>
+  <article class="product-card" data-price="1000" data-category="popular">
+    <img src="images/1.jpg" alt="Товар 1" class="product-card__image">
+    <h3 class="product-card__title">Товар 1</h3>
+    <p class="product-card__description">Краткое описание учебного товара.</p>
+    <!-- Добавлен класс product-card__price-value для удобства поиска -->
+    <p class="product-card__price product-card__price-value">Цена: 1000 руб.</p>
+    <button class="button product-card__button" type="button" data-product="Товар 1">Заказать</button>
+  </article>
 
-          <article class="product-card">
-            <img src="images/2.jpeg" alt="Товар 2" class="product-card__image">
+  <!-- Товар 2 -->
+  <article class="product-card" data-price="1500" data-category="new">
+    <img src="images/2.jpeg" alt="Товар 2" class="product-card__image">
+    <h3 class="product-card__title">Товар 2</h3>
+    <p class="product-card__description">Краткое описание учебного товара.</p>
+    <p class="product-card__price product-card__price-value">Цена: 1500 руб.</p>
+    <button class="button product-card__button" type="button" data-product="Товар 2">Заказать</button>
+  </article>
 
-            <h3 class="product-card__title">Товар 2</h3>
-            <p class="product-card__description">Краткое описание учебного товара.</p>
-            <p class="product-card__price">Цена: 1500 руб.</p>
-            <button class="button product-card__button" type="button" data-product="Товар 2">
-              Заказать
-            </button>
-          </article>
-
-          <article class="product-card">
-            <img src="images/3.jpeg" alt="Товар 3" class="product-card__image">
-            <h3 class="product-card__title">Товар 3</h3>
-            <p class="product-card__description">Краткое описание учебного товара.</p>
-            <p class="product-card__price">Цена: 2000 руб.</p>
-            <button class="button product-card__button" type="button" data-product="Товар 3">
-              Заказать
-            </button>
-          </article>
+  <!-- Товар 3 -->
+  <article class="product-card" data-price="2000" data-category="popular">
+    <img src="images/3.jpeg" alt="Товар 3" class="product-card__image">
+    <h3 class="product-card__title">Товар 3</h3>
+    <p class="product-card__description">Краткое описание учебного товара.</p>
+    <p class="product-card__price product-card__price-value">Цена: 2000 руб.</p>
+    <button class="button product-card__button" type="button" data-product="Товар 3">Заказать</button>
+  </article>
 
         </div>
       </section>
