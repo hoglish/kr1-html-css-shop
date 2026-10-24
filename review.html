@@ -103,17 +103,17 @@
   </footer>
 
 
-  <dialog class="order-dialog" id="order-dialog" aria-labelledby="order-dialog-title">
-    <h2 class="order-dialog__title" id="order-dialog-title">Отзыв</h2>
+    <dialog class="order-dialog" id="order-dialog" aria-labelledby="order-dialog-title">
+    <h2 class="order-dialog__title" id="order-dialog-title">Оставить отзыв</h2>
 
     <form class="order-form" id="order-form" action="#" method="post" novalidate>
       <input id="selected-product" name="selected-product" type="hidden">
 
       <div class="form-field">
-        <label class="form-field__label" for="order-name">Имя</label>
+        <label class="form-field__label" for="review-name">Имя</label>
         <input
           class="form-field__input"
-          id="order-name"
+          id="review-name"
           name="name"
           type="text"
           placeholder="Введите ваше имя"
@@ -124,10 +124,10 @@
       </div>
 
       <div class="form-field">
-        <label class="form-field__label" for="order-email">E-mail</label>
+        <label class="form-field__label" for="review-email">E-mail</label>
         <input
           class="form-field__input"
-          id="order-email"
+          id="review-email"
           name="email"
           type="email"
           placeholder="example@mail.ru"
@@ -136,48 +136,49 @@
         >
       </div>
 
-        <div class="form-field">
-        <label class="form-field__label" for="order-topic">Товар</label>
-        <select class="form-field__select" id="order-topic" name="topic" required>
-          <option value="">Товар 1</option>
-          <option value="product">Товар 2</option>
-          <option value="consultation">Товар 3</option>
+      <div class="form-field">
+        <label class="form-field__label" for="review-product">Товар</label>
+        <select class="form-field__select" id="review-product" name="reviewProduct" required>
+          <option value="">Выберите товар</option>
+          <option value="product1">Товар 1</option>
+          <option value="product2">Товар 2</option>
+          <option value="product3">Товар 3</option>
         </select>
       </div>
 
-
       <div class="form-field">
-        <label class="form-field__label" for="order-comment">Текст отзыва</label>
+        <label class="form-field__label" for="review-text">Текст отзыва</label>
         <textarea
           class="form-field__textarea"
-          id="order-comment"
-          name="comment"
+          id="review-text"
+          name="reviewText"
           rows="4"
-          placeholder="Укажите текст отзыва"
+          minlength="10"
+          placeholder="Укажите текст отзыва (минимум 10 символов)"
+          required
         ></textarea>
       </div>
 
-        <div class="form-field">
-        <label class="form-field__label" for="order-name">Оценка</label>
+      <div class="form-field">
+        <label class="form-field__label" for="review-rating">Оценка (1–5)</label>
         <input
           class="form-field__input"
-          id="order-name"
-          name="name"
-          type="text"
+          id="review-rating"
+          name="rating"
+          type="number"
+          min="1"
+          max="5"
+          step="1"
           placeholder="Введите оценку"
-          maxlength="1"
           required
         >
-      </div>
-
-
       </div>
 
       <div class="form-field form-field--checkbox">
         <label class="form-field__checkbox-label">
           <input
             class="form-field__checkbox"
-            id="order-agreement"
+            id="review-agreement"
             name="agreement"
             type="checkbox"
             required
@@ -187,6 +188,7 @@
       </div>
 
       <div class="form-actions">
+        <button class="button button--ghost form-actions__button" type="button" data-reset>Очистить</button>
         <button class="button form-actions__button" type="button" id="close-order-dialog">Закрыть</button>
         <button class="button form-actions__button" type="submit">Отправить отзыв</button>
       </div>
